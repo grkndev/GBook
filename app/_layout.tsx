@@ -8,6 +8,7 @@ import * as React from "react";
 import { Platform } from "react-native";
 import { NAV_THEME } from "~/lib/constants";
 import { useColorScheme } from "~/lib/useColorScheme";
+import { useFonts } from "expo-font";
 
 const LIGHT_THEME: Theme = {
   dark: false,
@@ -30,6 +31,9 @@ export default function RootLayout() {
   const { colorScheme, setColorScheme, isDarkColorScheme } = useColorScheme();
   const [isColorSchemeLoaded, setIsColorSchemeLoaded] = React.useState(false);
 
+  const [loaded, error] = useFonts({
+    "SF-Pro": require("assets/fonts/SF-Pro.ttf"),
+  });
   React.useEffect(() => {
     (async () => {
       const theme = await AsyncStorage.getItem("theme");
@@ -50,12 +54,19 @@ export default function RootLayout() {
         return;
       }
       setIsColorSchemeLoaded(true);
-    })().finally(() => {
-      SplashScreen.hideAsync();
-    });
+    })();
   }, []);
 
+  React.useEffect(() => {
+    if (loaded || error) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded, error]);
+
   if (!isColorSchemeLoaded) {
+    return null;
+  }
+  if (!loaded && !error) {
     return null;
   }
 
