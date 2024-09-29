@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Card from "@/components/ui/Card";
 import Icon from "@/lib/Icons/icon";
+import PartnerIcon from "@/lib/Icons/Partner";
 import { Link, useRouter } from "expo-router";
 import { useState } from "react";
 import {
@@ -41,7 +42,10 @@ export default function UserScreen() {
               src="https://cdnqrmenu.s3.eu-west-1.amazonaws.com/grkn/me3.jpg"
             />
             <View className="flex flex-col items-center justify-center mt-4">
-              <Text className="font-bold text-2xl">GrknDev</Text>
+              <View className="flex flex-row gap-2 items-center justify-center">
+                <Text className="font-bold text-2xl">GrknDev</Text>
+                <PartnerIcon />
+              </View>
               <Text className="text-black/50">@grkndev</Text>
             </View>
             <Text className="text-center mt-2 text-xs">
