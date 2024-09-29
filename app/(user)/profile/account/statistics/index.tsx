@@ -44,7 +44,6 @@ export default function StatisticsIndex() {
     setIsModalVisible(true);
   }, []);
   const handleSheetChanges = useCallback((index: number) => {
-    console.log("handleSheetChanges", index);
     if (index === -1) {
       setIsModalVisible(false);
     }
@@ -64,7 +63,6 @@ export default function StatisticsIndex() {
   );
   useEffect(() => {
     bottomSheetModalRef.current?.close();
-    console.log("selectedPeriod", selectedPeriod);
   }, [selectedPeriod]);
 
   return (
@@ -94,7 +92,8 @@ export default function StatisticsIndex() {
           <BottomSheetView className="flex-1 items-center p-4">
             <Pressable
               onPress={() => setSelectedPeriod("7")}
-              className={cn("w-full p-2 flex flex-row items-center gap-2 rounded-xl",
+              className={cn(
+                "w-full p-2 flex flex-row items-center gap-2 rounded-xl",
                 selectedPeriod === "7" && "bg-zinc-200"
               )}
             >
@@ -107,7 +106,8 @@ export default function StatisticsIndex() {
             </Pressable>
             <Pressable
               onPress={() => setSelectedPeriod("14")}
-              className={cn("w-full p-2 flex flex-row items-center gap-2 rounded-xl",
+              className={cn(
+                "w-full p-2 flex flex-row items-center gap-2 rounded-xl",
                 selectedPeriod === "14" && "bg-zinc-200"
               )}
             >
@@ -120,7 +120,8 @@ export default function StatisticsIndex() {
             </Pressable>
             <Pressable
               onPress={() => setSelectedPeriod("30")}
-              className={cn("w-full p-2 flex flex-row items-center gap-2 rounded-xl",
+              className={cn(
+                "w-full p-2 flex flex-row items-center gap-2 rounded-xl",
                 selectedPeriod === "30" && "bg-zinc-200"
               )}
             >
