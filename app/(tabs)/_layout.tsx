@@ -1,3 +1,4 @@
+import "~/global.css"
 import Icon from "@/lib/Icons/icon";
 import { useColorScheme } from "@/lib/useColorScheme";
 import { Tabs } from "expo-router";
