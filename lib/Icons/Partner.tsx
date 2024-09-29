@@ -1,12 +1,7 @@
 import * as React from "react";
 import Svg, { SvgProps, G, Path, Defs, ClipPath } from "react-native-svg";
-const PartnerIcon = (props: SvgProps) => (
-  <Svg
-    width={24}
-    height={24}
-    fill="none"
-    {...props}
-  >
+const PartnerIcon = ({ size = 24, ...props }: SvgProps & { size?: number }) => (
+  <Svg width={size} height={size} {...props}>
     <G clipPath="url(#a)">
       <Path
         fill="#6441A5"

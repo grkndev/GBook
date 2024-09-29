@@ -2,7 +2,7 @@ import { FlatList, Image, Pressable, View } from "react-native";
 import Text from "./Text";
 import Icon from "@/lib/Icons/icon";
 import { Suspense, useEffect, useState } from "react";
-import Card from "./ui/Card";
+import Card from "./Card";
 
 
 type CategoryData = {

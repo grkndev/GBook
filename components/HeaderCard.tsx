@@ -1,31 +1,10 @@
-import Text from "@/components/Text";
 import Icon from "@/lib/Icons/icon";
 import { Href, useRouter } from "expo-router";
 import { icons } from "lucide-react-native";
 import { Pressable, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import Text from "@/components/Text";
 
-export default function ProfileIndex() {
-  return (
-    <SafeAreaView>
-      <View className="flex flex-col items-center justify-between w-full h-full py-8">
-        <View className="flex w-full flex-col justify-center items-center">
-          <View className="w-full">
-            <Card title="Hesap"       href="/user" iconName={"UserRound"} />
-            <Card title="Favorilerim" href="/user" iconName={"Heart"} />
-            <Card title="Ayarlar"     href="/user" iconName={"Settings"} />
-            <Card title="Çıkış Yap"   href="/user" iconName={"LogOut"} />
-          </View>
-        </View>
-        <View>
-          <Text className="text-black/25">Uygulama sürümü: 1.0.0</Text>
-        </View>
-      </View>
-    </SafeAreaView>
-  );
-}
-
-function Card({
+export default function HeaderCard({
   iconName,
   title,
   href,
