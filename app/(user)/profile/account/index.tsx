@@ -22,7 +22,7 @@ export default function AccountIndex() {
           <HeaderCard title="İştirak ayarlar" href="/profile/account/partnership" iconName={"Handshake"} />
           <HeaderCard
             title="İstatistikler"
-            href="/user"
+            href="/profile/account/statistics"
             iconName={"ChartNoAxesCombined"}
           />
           <HeaderCard title="Ayarlar" href="/user" iconName={"CreditCard"} />
