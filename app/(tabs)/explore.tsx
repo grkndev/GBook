@@ -1,9 +1,30 @@
-import { Text, View } from "react-native";
+import Text from "@/components/Text";
+import { TextInput, View } from "react-native";
+import { Input } from "~/components/ui/input";
+import { SafeAreaView } from "react-native-safe-area-context";
+import Icon from "@/lib/Icons/icon";
+import { Separator } from "@/components/ui/separator";
+import CategoryList from "@/components/CategoryList";
 
 export default function TabTwoScreen() {
   return (
-    <View>
-      <Text>Explore!</Text>
-    </View>
+    <SafeAreaView>
+      <View className="flex flex-col gap-3 p-4">
+        <View className="flex flex-col gap-[2px]">
+          <Text className="font-bold text-4xl">Ara</Text>
+          <Text>Favori yazılar, yazarlar ve daha fazlası</Text>
+        </View>
+        <View className="bg-zinc-200 rounded-full flex flex-row w-full overflow-hidden p-4 gap-2 items-center justify-start border-zinc-400">
+          <Icon name="Search" color="#b3b3b3" size={24} />
+          <TextInput placeholder="Ara" className="w-[76vw] font-medium" />
+        </View>
+      </View>
+      <Separator className="bg-zinc-300 my-2" />
+      <View className="flex flex-col gap-6 p-4">
+        <CategoryList categoyName="Favori Yazarlar" />
+        <CategoryList categoyName="Gündemdekiler" />
+        <CategoryList categoyName="Türler" />
+      </View>
+    </SafeAreaView>
   );
 }
