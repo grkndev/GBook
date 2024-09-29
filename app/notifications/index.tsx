@@ -4,7 +4,7 @@ import { Link } from "expo-router";
 import { FlatList, Image, Pressable, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function ProfileIndex() {
+export default function NotificationIndex() {
   return (
     <SafeAreaView className="flex-1">
       <View className="h-full">
