@@ -1,5 +1,7 @@
+import { Button } from "@/components/ui/button";
 import Card from "@/components/ui/Card";
 import Icon from "@/lib/Icons/icon";
+import { Link, useRouter } from "expo-router";
 import { useState } from "react";
 import {
   ActivityIndicator,
@@ -14,20 +16,22 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function UserScreen() {
   const [postList, setPostList] = useState(9);
+  const [hasFollowing, setHasFollowing] = useState(false);
+  const router = useRouter();
   return (
     <SafeAreaView>
       <ScrollView className="px-8 py-4">
         <View className="flex flex-row items-center justify-between">
-          <Pressable className="p-2">
+          <Pressable onPress={() => router.back()} className="p-2">
             <Icon name="ChevronLeft" size={24} color="#000" />
           </Pressable>
           <View className="flex flex-row items-center justify-center gap-4">
-            <Pressable className="p-2">
+            <Link href={"/notifications"} className="p-2">
               <Icon name="Bell" size={24} color="#000" />
-            </Pressable>
-            <Pressable className="p-2">
+            </Link>
+            <Link href={"/profile"} className="p-2">
               <Icon name="Settings" size={24} color="#000" />
-            </Pressable>
+            </Link>
           </View>
         </View>
         <View className="flex flex-col items-center justify-center mt-8">
@@ -58,6 +62,23 @@ export default function UserScreen() {
                 <Text className="font-bold text-lg">1</Text>
                 <Text className="font-semibold text-xs">Takip Edilen</Text>
               </View>
+            </View>
+            <View className="flex mb-8 w-full">
+              {hasFollowing ? (
+                <Button
+                  onPress={() => setHasFollowing(false)}
+                  className="bg-[#DC2626] rounded-2xl px-4 items-center justify-center flex"
+                >
+                  <Text className="text-white">Takipten Çık</Text>
+                </Button>
+              ) : (
+                <Button
+                  onPress={() => setHasFollowing(true)}
+                  className="bg-[#131313] rounded-2xl px-4 items-center justify-center flex"
+                >
+                  <Text className="text-white">Takip Et</Text>
+                </Button>
+              )}
             </View>
           </View>
           <View className="items-center justify-center flex flex-col gap-6">

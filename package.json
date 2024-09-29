@@ -20,6 +20,8 @@
     "@react-navigation/native": "^6.0.2",
     "@rn-primitives/avatar": "^1.0.5",
     "@rn-primitives/separator": "^1.0.4",
+    "@rn-primitives/slot": "^1.0.4",
+    "@rn-primitives/types": "^1.0.4",
     "axios": "^1.7.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
