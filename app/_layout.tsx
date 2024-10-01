@@ -1,8 +1,9 @@
-import "~/global.css";
+import '~/global.css';
 
 import { NAV_THEME } from "~/lib/constants";
 import { useColorScheme } from "~/lib/useColorScheme";
 // import { PortalHost } from '~/components/primitives/portal';
+
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Theme, ThemeProvider } from "@react-navigation/native";
@@ -59,13 +60,19 @@ export default function RootLayout() {
         return;
       }
       setIsColorSchemeLoaded(true);
-      if (loaded || error) {
-        SplashScreen.hideAsync();
-      }
     })();
+  }, []);
+
+  React.useEffect(() => {
+    if (loaded || error) {
+      SplashScreen.hideAsync();
+    }
   }, [loaded, error]);
 
-  if (!loaded && !error && !isColorSchemeLoaded) {
+  if (!isColorSchemeLoaded) {
+    return null;
+  }
+  if (!loaded && !error) {
     return null;
   }
 
