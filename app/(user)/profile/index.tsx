@@ -15,7 +15,11 @@ export default function ProfileIndex() {
               href="/profile/account"
               iconName={"UserRound"}
             />
-            <Card title="Favorilerim" href="/user" iconName={"Heart"} />
+            <Card
+              title="Favorilerim"
+              href="/profile/favorites"
+              iconName={"Heart"}
+            />
             <Card title="Ayarlar" href="/user" iconName={"Settings"} />
             <Card title="Çıkış Yap" href="/user" iconName={"LogOut"} />
           </View>
