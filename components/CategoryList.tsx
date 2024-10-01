@@ -22,7 +22,6 @@ export default function CategoryList({ categoyName }: { categoyName: string }) {
     const res = await fetch("/api/categories?categoryName=" + categoyName);
     const data = await res.json();
     setState(data);
-    console.log("sa");
   }
   if (!state) return null;
 

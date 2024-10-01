@@ -1,9 +1,8 @@
-import HeaderCard from "@/components/HeaderCard";
+import BookCard from "@/components/BookCard";
 import Text from "@/components/Text";
 import Icon from "@/lib/Icons/icon";
-import { Href, Link, useRouter } from "expo-router";
-import { icons } from "lucide-react-native";
-import { FlatList, Image, Pressable, View } from "react-native";
+import { Link } from "expo-router";
+import { FlatList, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function FavIndex() {
@@ -11,7 +10,7 @@ export default function FavIndex() {
     <SafeAreaView>
       <View className="flex flex-row justify-between items-center p-8 border-b border-primary/10">
         <Link href={"/profile"}>
-          <Icon name="ChevronLeft" size={24}  />
+          <Icon name="ChevronLeft" size={24} />
         </Link>
         <Text className="font-bold text-2xl text-primary">Favorileirm</Text>
         <View className="w-6 h-6" />
@@ -31,21 +30,5 @@ export default function FavIndex() {
         />
       </View>
     </SafeAreaView>
-  );
-}
-
-function BookCard() {
-  return (
-    <Pressable className="max-w-28 p-2 bg-secondary rounded-xl gap-2">
-      <View className="w-full rounded-xl overflow-hidden">
-        <Image
-          src="https://placehold.jp/600x750.png"
-          className="aspect-[4/5] w-24 object-cover"
-        />
-      </View>
-      <Text className="text-sm text-center truncate text-primary">
-        Lorem ipsum dolor sit amet.
-      </Text>
-    </Pressable>
   );
 }
