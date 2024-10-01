@@ -1,9 +1,8 @@
-import '~/global.css';
+import "~/global.css";
 
 import { NAV_THEME } from "~/lib/constants";
 import { useColorScheme } from "~/lib/useColorScheme";
 // import { PortalHost } from '~/components/primitives/portal';
-
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Theme, ThemeProvider } from "@react-navigation/native";
@@ -42,6 +41,9 @@ export default function RootLayout() {
   });
   React.useEffect(() => {
     (async () => {
+      if (loaded || error) {
+        SplashScreen.hideAsync();
+      }
       const theme = await AsyncStorage.getItem("theme");
       if (Platform.OS === "web") {
         // Adds the background color to the html element to prevent white background on overscroll.
@@ -61,18 +63,9 @@ export default function RootLayout() {
       }
       setIsColorSchemeLoaded(true);
     })();
-  }, []);
-
-  React.useEffect(() => {
-    if (loaded || error) {
-      SplashScreen.hideAsync();
-    }
   }, [loaded, error]);
 
-  if (!isColorSchemeLoaded) {
-    return null;
-  }
-  if (!loaded && !error) {
+  if (!loaded && !error && !isColorSchemeLoaded) {
     return null;
   }
 

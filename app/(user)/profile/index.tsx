@@ -16,7 +16,7 @@ export default function ProfileIndex() {
         <Text className="font-bold text-2xl text-primary">Ayarlar</Text>
         <View className="w-6 h-6" />
       </View>
-      <View className="flex flex-col items-center justify-between w-full h-full py-8">
+      <View className="flex flex-col items-center justify-between w-full h-full">
         <View className="flex w-full flex-col justify-center items-center">
           <View className="w-full">
             <Card
