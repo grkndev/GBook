@@ -31,15 +31,12 @@ export default function CategoryList({ categoyName }: { categoyName: string }) {
         <Text className="text-2xl font-bold text-primary">
           {state.categoryName}
         </Text>
-        <Icon
-          name="ChevronRight"
-          size={20}
-        />
+        <Icon name="ChevronRight" size={20} />
       </Pressable>
       <FlatList
         data={state.data}
         renderItem={({ item }) => (
-          <Card title={item.title} imageUrl={item.img} />
+          <Card title={item.title} imageUrl={item.img} href={"bookId1"} />
         )}
         keyExtractor={(_, index) => _.id.toString()}
         horizontal
