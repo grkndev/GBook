@@ -41,9 +41,6 @@ export default function RootLayout() {
   });
   React.useEffect(() => {
     (async () => {
-      if (loaded || error) {
-        SplashScreen.hideAsync();
-      }
       const theme = await AsyncStorage.getItem("theme");
       if (Platform.OS === "web") {
         // Adds the background color to the html element to prevent white background on overscroll.
@@ -62,6 +59,9 @@ export default function RootLayout() {
         return;
       }
       setIsColorSchemeLoaded(true);
+      if (loaded || error) {
+        SplashScreen.hideAsync();
+      }
     })();
   }, [loaded, error]);
 
