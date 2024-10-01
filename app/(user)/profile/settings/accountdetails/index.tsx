@@ -6,17 +6,17 @@ import { Link } from "expo-router";
 import { View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function ProfileIndex() {
+export default function AccountDetailsIndex() {
   return (
     <SafeAreaView>
       <View className="flex flex-row justify-between items-center p-8 border-b border-primary/10">
-        <Link href={"/user"}>
+        <Link href={"/profile/settings"}>
           <Icon name="ChevronLeft" size={24} />
         </Link>
-        <Text className="font-bold text-2xl text-primary">Ayarlar</Text>
+        <Text className="font-bold text-2xl text-primary">Hesap Detayları</Text>
         <View className="w-6 h-6" />
       </View>
-      <View className="flex flex-col items-center justify-between w-full h-full py-8">
+      <View className="flex flex-col items-center justify-between w-full h-full ">
         <View className="flex w-full flex-col justify-center items-center">
           <View className="w-full">
             <Card

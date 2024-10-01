@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 export default function HelpScreen() {
   return (
     <SafeAreaView>
-      <Text>HelpScreen</Text>
+      <Text className='text-primary'>HelpScreen</Text>
     </SafeAreaView>
   )
 }

@@ -24,14 +24,14 @@ export default function UserScreen() {
       <ScrollView className="px-8 py-4">
         <View className="flex flex-row items-center justify-between">
           <Pressable onPress={() => router.back()} className="p-2">
-            <Icon name="ChevronLeft" size={24} color="#000" />
+            <Icon name="ChevronLeft" size={24} />
           </Pressable>
           <View className="flex flex-row items-center justify-center gap-4">
             <Link href={"/notifications"} className="p-2">
-              <Icon name="Bell" size={24} color="#000" />
+              <Icon name="Bell" size={24} />
             </Link>
             <Link href={"/profile"} className="p-2">
-              <Icon name="Settings" size={24} color="#000" />
+              <Icon name="Settings" size={24} />
             </Link>
           </View>
         </View>
@@ -39,46 +39,53 @@ export default function UserScreen() {
           <View className="flex flex-col items-center justify-center gap-y-2">
             <Image
               className="rounded-full w-48 h-48"
-              src="https://cdnqrmenu.s3.eu-west-1.amazonaws.com/grkn/me3.jpg"
+              src="https://placehold.jp/150x150.png"
             />
             <View className="flex flex-col items-center justify-center mt-4">
               <View className="flex flex-row gap-2 items-center justify-center">
-                <Text className="font-bold text-2xl">GrknDev</Text>
+                <Text className="font-bold text-2xl text-primary">GrknDev</Text>
                 <PartnerIcon />
               </View>
-              <Text className="text-black/50">@grkndev</Text>
+              <Text className="text-primary/50">@grkndev</Text>
             </View>
-            <Text className="text-center mt-2 text-xs">
+            <Text className="text-center mt-2 text-xs text-primary">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
               maximus nisi odio, ut lobortis odio condimentum a. Integer et enim
               et mi consectetur solli
             </Text>
             <View className="flex flex-row w-full ">
               <View className="w-24 h-24 flex flex-col items-center justify-center p-2">
-                <Text className="font-bold text-lg">9</Text>
-                <Text className="font-semibold text-xs">Paylaşım</Text>
+                <Text className="font-bold text-lg text-primary">9</Text>
+                <Text className="font-semibold text-xs text-primary">
+                  Paylaşım
+                </Text>
               </View>
               <View className="w-24 h-24 flex flex-col items-center justify-center p-2">
-                <Text className="font-bold text-lg">100M</Text>
-                <Text className="font-semibold text-xs">Takipçi</Text>
+                <Text className="font-bold text-lg text-primary">100M</Text>
+                <Text className="font-semibold text-xs text-primary">
+                  Takipçi
+                </Text>
               </View>
               <View className="w-24 h-24 flex flex-col items-center justify-center p-2">
-                <Text className="font-bold text-lg">1</Text>
-                <Text className="font-semibold text-xs">Takip Edilen</Text>
+                <Text className="font-bold text-lg text-primary">1</Text>
+                <Text className="font-semibold text-xs text-primary">
+                  Takip Edilen
+                </Text>
               </View>
             </View>
             <View className="flex mb-8 w-full">
               {hasFollowing ? (
                 <Button
                   onPress={() => setHasFollowing(false)}
-                  className="bg-[#DC2626] rounded-2xl px-4 items-center justify-center flex"
+                  variant={"destructive"}
+                  className="rounded-2xl px-4 items-center justify-center flex"
                 >
                   <Text className="text-white">Takipten Çık</Text>
                 </Button>
               ) : (
                 <Button
                   onPress={() => setHasFollowing(true)}
-                  className="bg-[#131313] rounded-2xl px-4 items-center justify-center flex"
+                  className="bg-[#1e1e1e] rounded-2xl px-4 items-center justify-center flex"
                 >
                   <Text className="text-white">Takip Et</Text>
                 </Button>
@@ -86,7 +93,9 @@ export default function UserScreen() {
             </View>
           </View>
           <View className="items-center justify-center flex flex-col gap-6">
-            <Text className="font-bold">GrknDev'in paylaşımları</Text>
+            <Text className="font-bold text-primary">
+              GrknDev'in paylaşımları
+            </Text>
             <View className="flex flex-row flex-wrap gap-4 items-center justify-center mb-8">
               <FlatList
                 key={"#"}

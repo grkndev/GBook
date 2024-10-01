@@ -1,16 +1,21 @@
-import "@/global.css";
+import '~/global.css';
+
+import { NAV_THEME } from "~/lib/constants";
+import { useColorScheme } from "~/lib/useColorScheme";
+// import { PortalHost } from '~/components/primitives/portal';
+
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Theme, ThemeProvider } from "@react-navigation/native";
-import { SplashScreen, Stack } from "expo-router";
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
+
 import { StatusBar } from "expo-status-bar";
+import { SplashScreen, Stack } from "expo-router";
+import { useFonts } from "expo-font";
 import * as React from "react";
 import { Platform } from "react-native";
-import { NAV_THEME } from "~/lib/constants";
-import { useColorScheme } from "~/lib/useColorScheme";
-import { useFonts } from "expo-font";
-import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+
 const LIGHT_THEME: Theme = {
   dark: false,
   colors: NAV_THEME.light,
@@ -80,6 +85,7 @@ export default function RootLayout() {
             <Stack screenOptions={{ headerShown: false }} />
           </BottomSheetModalProvider>
         </GestureHandlerRootView>
+        {/* <PortalHost /> */}
       </ThemeProvider>
     </>
   );

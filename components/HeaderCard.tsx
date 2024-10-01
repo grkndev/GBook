@@ -19,14 +19,14 @@ export default function HeaderCard({
       onPress={() => {
         router.push(href);
       }}
-      className="flex flex-row items-center justify-between p-8 border-b border-zinc-200"
+      className="flex flex-row items-center justify-between p-8 border-b   border-primary/10"
     >
       <View className="flex flex-row items-center justify-center gap-4">
-        <Icon name={iconName} size={24} color="#000" />
-        <Text className="font-medium text-xl">{title}</Text>
+        <Icon name={iconName} size={24} />
+        <Text className="font-medium text-xl text-primary">{title}</Text>
       </View>
       <View className="flex flex-row items-center justify-center">
-        <Icon name="ChevronRight" size={24} color="#000" />
+        <Icon name="ChevronRight" size={24} />
       </View>
     </Pressable>
   );

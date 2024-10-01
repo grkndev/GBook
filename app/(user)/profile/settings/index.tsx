@@ -2,6 +2,7 @@ import HeaderCard from "@/components/HeaderCard";
 import Text from "@/components/Text";
 import { Switch } from "@/components/ui/switch";
 import Icon from "@/lib/Icons/icon";
+import { useColorScheme } from "@/lib/useColorScheme";
 import { Href, Link, useRouter } from "expo-router";
 import { icons } from "lucide-react-native";
 import React from "react";
@@ -9,14 +10,15 @@ import { FlatList, Image, Pressable, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function SettingsIndex() {
-  const [checked, setChecked] = React.useState(false);
+  const { colorScheme, isDarkColorScheme, toggleColorScheme } =
+    useColorScheme();
   return (
     <SafeAreaView>
-      <View className="flex flex-row justify-between items-center p-8 border-b border-zinc-200">
+      <View className="flex flex-row justify-between items-center p-8 border-b border-primary/10">
         <Link href={"/profile"}>
-          <Icon name="ChevronLeft" size={24} color="#000" />
+          <Icon name="ChevronLeft" size={24} />
         </Link>
-        <Text className="font-bold text-2xl">Ayarlar</Text>
+        <Text className="font-bold text-2xl text-primary">Ayarlar</Text>
         <View className="w-6 h-6" />
       </View>
 
@@ -44,16 +46,22 @@ export default function SettingsIndex() {
           />
           <Pressable
             onPress={() => {
-              setChecked(!checked);
+              toggleColorScheme();
             }}
-            className="flex flex-row items-center justify-between p-8 border-b border-zinc-200"
+            className="flex flex-row items-center justify-between p-8 border-b border-primary/10"
           >
             <View className="flex flex-row items-center justify-center gap-4">
-              <Icon name={"SunMoon"} size={24} color="#000" />
-              <Text className="font-medium text-xl">{"Koyu Tema"}</Text>
+              <Icon name={"SunMoon"} size={24} />
+              <Text className="font-medium text-xl text-primary">
+                {"Koyu Tema"}
+              </Text>
             </View>
             <View className="flex flex-row items-center justify-center">
-            <Switch checked={checked} onCheckedChange={setChecked} nativeID='dark-mode' />
+              <Switch
+                checked={isDarkColorScheme}
+                onCheckedChange={(value) => toggleColorScheme()}
+                nativeID="dark-mode"
+              />
             </View>
           </Pressable>
         </View>

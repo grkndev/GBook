@@ -1,6 +1,7 @@
 import BookmarkCard from "@/components/BookmarkCard";
 import { Separator } from "@/components/ui/separator";
 import Icon from "@/lib/Icons/icon";
+import { useColorScheme } from "nativewind";
 import { FlatList, Image, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -9,16 +10,20 @@ export default function BookmarkScreen() {
     <SafeAreaView>
       <View className="flex flex-row items-center justify-between gap-3 p-8">
         <View className="flex flex-col gap-[2px]">
-          <Text className="font-bold text-4xl">Kaydedilenler</Text>
-          <Text className="text-sm text-black/50">
+          <Text className="font-bold text-4xl text-primary">Kaydedilenler</Text>
+          <Text className="text-sm text-primary/50">
             Tekrar okumak üzere işaretdiklerin seni bekliyor!
           </Text>
         </View>
         <View>
-          <Icon fill={"#000"} name="Bookmark" color="#000" size={48} />
+          <Icon
+            // fill={useColorScheme().colorScheme === "dark" ? "#fff" : "#000"}
+            name="Bookmark"
+            size={48}
+          />
         </View>
       </View>
-      <Separator className="bg-zinc-300 my-2" />
+      <Separator className="bg-secondary my-2" />
 
       <FlatList
         numColumns={2}

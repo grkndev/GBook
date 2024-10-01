@@ -48,7 +48,7 @@ export default function TabLayout() {
         options={{
           tabBarIcon: ({ color, focused }) => (
             <View className="w-8 h-8 rounded-full overflow-hidden">
-              <Image src="https://cdnqrmenu.s3.eu-west-1.amazonaws.com/grkn/me3.jpg" className="w-full h-full" />
+              <Image src="https://placehold.jp/150x150.png" className="w-full h-full" />
             </View>
           ),
         }}

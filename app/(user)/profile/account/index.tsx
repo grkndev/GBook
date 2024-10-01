@@ -9,11 +9,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 export default function AccountIndex() {
   return (
     <SafeAreaView>
-      <View className="flex flex-row justify-between items-center p-8 border-b border-zinc-200">
+      <View className="flex flex-row justify-between items-center p-8 border-b border-primary/10">
         <Link href={"/profile"}>
-          <Icon name="ChevronLeft" size={24} color="#000" />
+          <Icon name="ChevronLeft" size={24}/>
         </Link>
-        <Text className="font-bold text-2xl">Hesap</Text>
+        <Text className="font-bold text-2xl text-primary">Hesap</Text>
         <View className="w-6 h-6" />
       </View>
 

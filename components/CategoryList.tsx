@@ -4,7 +4,6 @@ import Icon from "@/lib/Icons/icon";
 import { Suspense, useEffect, useState } from "react";
 import Card from "./Card";
 
-
 type CategoryData = {
   id: number;
   slug: string;
@@ -23,15 +22,20 @@ export default function CategoryList({ categoyName }: { categoyName: string }) {
     const res = await fetch("/api/categories?categoryName=" + categoyName);
     const data = await res.json();
     setState(data);
-    console.log("sa")
+    console.log("sa");
   }
   if (!state) return null;
 
   return (
     <View className="flex flex-col items-start justify-start gap-2 ">
       <Pressable className="flex flex-row items-center justify-center gap-2">
-        <Text className="text-2xl font-bold">{state.categoryName}</Text>
-        <Icon name="ChevronRight" color="black" size={20} />
+        <Text className="text-2xl font-bold text-primary">
+          {state.categoryName}
+        </Text>
+        <Icon
+          name="ChevronRight"
+          size={20}
+        />
       </Pressable>
       <FlatList
         data={state.data}
@@ -47,6 +51,3 @@ export default function CategoryList({ categoyName }: { categoyName: string }) {
     </View>
   );
 }
-
-
-

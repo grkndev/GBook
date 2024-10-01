@@ -10,11 +10,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 export default function PartnerShipIndex() {
   return (
     <SafeAreaView>
-      <View className="flex flex-row justify-between items-center p-8 border-b border-zinc-200">
+      <View className="flex flex-row justify-between items-center p-8 border-b border-primary/10">
         <Link href={"/profile/account"}>
-          <Icon name="ChevronLeft" size={24} color="#000" />
+          <Icon name="ChevronLeft" size={24} />
         </Link>
-        <Text className="font-bold text-2xl">İştirak ayarları</Text>
+        <Text className="font-bold text-2xl text-primary">İştirak ayarları</Text>
         <View className="w-6 h-6" />
       </View>
 
@@ -44,7 +44,7 @@ export default function PartnerShipIndex() {
             title={
                 <View className="flex flex-row items-center">
                     <PartnerIcon  />
-                    <Text className="font-bold text-lg">Doğrula</Text>
+                    <Text className="font-bold text-lg text-primary">Doğrula</Text>
                 </View>
             }
             title2="Zaten programa dahil"
@@ -65,17 +65,17 @@ function Card({
   description: string;
 }) {
   return (
-    <Pressable className="bg-zinc-200 rounded-xl p-4">
+    <Pressable className="bg-muted rounded-xl p-4">
       <View className="flex flex-row items-center justify-between">
         {typeof title === "string" ? (
-          <Text className="font-bold text-lg">{title}</Text>
+          <Text className="font-bold text-lg text-primary">{title}</Text>
         ) : (
           title
         )}
-        <Text className="text-green-500">{title2}</Text>
+        <Text className="text-green-500 ">{title2}</Text>
       </View>
-      <Separator className="bg-zinc-300 my-2" />
-      <Text className="text-xs text-black/50">{description}</Text>
+      <Separator className="bg-primary/20 my-2" />
+      <Text className="text-xs text-primary/50">{description}</Text>
     </Pressable>
   );
 }

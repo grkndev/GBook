@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 export default function PaymentsScreen() {
   return (
     <SafeAreaView>
-      <Text>Subscription and Payments Screen</Text>
+      <Text className='text-primary'>Subscription and Payments Screen</Text>
     </SafeAreaView>
   )
 }

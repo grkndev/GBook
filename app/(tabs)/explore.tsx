@@ -11,15 +11,18 @@ export default function TabTwoScreen() {
     <SafeAreaView>
       <View className="flex flex-col gap-3 p-4">
         <View className="flex flex-col gap-[2px]">
-          <Text className="font-bold text-4xl">Ara</Text>
+          <Text className="font-bold text-4xl text-primary">Ara</Text>
           <Text>Favori yazılar, yazarlar ve daha fazlası</Text>
         </View>
-        <View className="bg-zinc-200 rounded-full flex flex-row w-full overflow-hidden p-4 gap-2 items-center justify-start border-zinc-400">
+        <View className="bg-primary/20 rounded-full flex flex-row w-full overflow-hidden  p-4 gap-2 items-center justify-start border-zinc-400">
           <Icon name="Search" color="#b3b3b3" size={24} />
-          <TextInput placeholder="Ara" className="w-[76vw] font-medium" />
+          <TextInput
+            placeholder="Ara"
+            className="w-[76vw] font-medium  text-primary"
+          />
         </View>
       </View>
-      <Separator className="bg-zinc-300 my-2" />
+      <Separator className="bg-secondary my-2" />
       <View className="flex flex-col gap-6 p-4">
         <CategoryList categoyName="Favori Yazarlar" />
         <CategoryList categoyName="Gündemdekiler" />

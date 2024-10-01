@@ -1,5 +1,5 @@
 import { useColorScheme } from "@/lib/useColorScheme";
-import { Image, Pressable, ScrollView, View } from "react-native";
+import { Image, Pressable, ScrollView, View, Text as RNText } from "react-native";
 import Text from "components/Text";
 import { SafeAreaView } from "react-native-safe-area-context";
 import MostLikedHero from "@/components/MostLikedHero";
@@ -14,34 +14,34 @@ export default function HomeScreen() {
   return (
     <SafeAreaView style={{ height: "100%" }}>
       <ScrollView className="h-full" showsVerticalScrollIndicator={false}>
-        <View className="bg-blue-500">
+        {/* <View className="bg-blue-500">
           <Pressable
             className="bg-white p-2"
             onPress={() => {
               setColorScheme(isDarkColorScheme ? "light" : "dark");
             }}
           >
-            <Text>Toggle Theme</Text>
+            <Text className="text-primary">Toggle Theme</Text>
           </Pressable>
-        </View>
+        </View> */}
         <View className="p-4 flex flex-row items-center justify-between">
           <View className="flex flex-col">
-            <Text className="font-bold text-3xl dark:text-white">
+            <Text className="font-bold text-3xl text-primary">
               Hoşgeldin, Gürkan
             </Text>
-            <Text className="text-xs">Heyecan dolu kitaplar seni bekliyor</Text>
+            <Text className="text-xs text-primary">Heyecan dolu kitaplar seni bekliyor</Text>
           </View>
           <Pressable
             onPress={() => router.navigate("/user")}
             className="flex items-center justify-center w-16 h-16 "
           >
             <Image
-              src="https://cdnqrmenu.s3.eu-west-1.amazonaws.com/grkn/me3.jpg"
+              src="https://placehold.jp/150x150.png"
               className="bg-black w-full h-full rounded-full"
             />
           </Pressable>
         </View>
-        <Separator className="bg-zinc-300 my-2" />
+        <Separator className="bg-secondary my-2" />
         <MostLikedHero />
         <View className=" p-4  flex flex-col w-full gap-4 mt-2 mb-8 h-full">
           <CategoryList categoyName="Bilim Kurgu" />

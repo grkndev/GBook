@@ -5,7 +5,6 @@ export default function Text({
   children,
   ...props
 }: TextProps & { children: React.ReactNode }) {
-  const { colorScheme } = useColorScheme();
   return (
     <RNText
       className={"text-primary"}

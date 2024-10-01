@@ -84,20 +84,20 @@ export default function StatisticsIndex() {
 
   return (
     <SafeAreaView>
-      <View className="flex flex-row justify-between items-center p-8 border-b border-zinc-200">
+      <View className="flex flex-row justify-between items-center p-8 border-b border-primary/10">
         <Link href={"/profile/account"}>
-          <Icon name="ChevronLeft" size={24} color="#000" />
+          <Icon name="ChevronLeft" size={24} />
         </Link>
-        <Text className="font-bold text-2xl">Aktivite</Text>
+        <Text className="font-bold text-2xl text-primary">Aktivite</Text>
         <View className="w-6 h-6" />
       </View>
 
       <View className="w-full px-4 mt-4">
         <Pressable
-          className="bg-zinc-200 p-2 rounded-xl"
+          className="bg-muted p-2 rounded-xl"
           onPress={handlePresentModalPress}
         >
-          <Text className="font-semibold">Son {selectedPeriod} Gün</Text>
+          <Text className="font-semibold text-primary">Son {selectedPeriod} Gün</Text>
         </Pressable>
         <BottomSheetModal
           ref={bottomSheetModalRef}
@@ -106,48 +106,48 @@ export default function StatisticsIndex() {
           onChange={handleSheetChanges}
           backdropComponent={renderBackdrop}
         >
-          <BottomSheetView className="flex-1 items-center p-4">
+          <BottomSheetView  className="flex-1 items-center p-4 dark:bg-secondary">
             <Pressable
               onPress={() => setSelectedPeriod("7")}
               className={cn(
-                "w-full p-2 flex flex-row items-center gap-2 rounded-xl",
-                selectedPeriod === "7" && "bg-zinc-200"
+                "w-full p-2 flex flex-row items-center gap-2 rounded-xl ",
+                selectedPeriod === "7" && "bg-muted"
               )}
             >
               <View className="w-8 h-8 items-center justify-center">
                 {selectedPeriod === "7" && (
-                  <Icon name="Check" size={16} color="#000" />
+                  <Icon name="Check" size={16} />
                 )}
               </View>
-              <Text>Son 7 Gün</Text>
+              <Text className="text-primary">Son 7 Gün</Text>
             </Pressable>
             <Pressable
               onPress={() => setSelectedPeriod("14")}
               className={cn(
                 "w-full p-2 flex flex-row items-center gap-2 rounded-xl",
-                selectedPeriod === "14" && "bg-zinc-200"
+                selectedPeriod === "14" && "bg-muted"
               )}
             >
               <View className="w-8 h-8 items-center justify-center">
                 {selectedPeriod === "14" && (
-                  <Icon name="Check" size={16} color="#000" />
+                  <Icon name="Check" size={16} />
                 )}
               </View>
-              <Text>Son 14 Gün</Text>
+              <Text className="text-primary">Son 14 Gün</Text>
             </Pressable>
             <Pressable
               onPress={() => setSelectedPeriod("30")}
               className={cn(
                 "w-full p-2 flex flex-row items-center gap-2 rounded-xl",
-                selectedPeriod === "30" && "bg-zinc-200"
+                selectedPeriod === "30" && "bg-muted"
               )}
             >
               <View className="w-8 h-8 items-center justify-center">
                 {selectedPeriod === "30" && (
-                  <Icon name="Check" size={16} color="#000" />
+                  <Icon name="Check" size={16} />
                 )}
               </View>
-              <Text>Son 30 Gün</Text>
+              <Text className="text-primary">Son 30 Gün</Text>
             </Pressable>
           </BottomSheetView>
         </BottomSheetModal>
@@ -253,18 +253,18 @@ function Card({
   persentage: number;
 }) {
   return (
-    <Pressable className="bg-zinc-200 rounded-xl p-4 w-[48%]">
+    <Pressable className="bg-muted rounded-xl p-4 w-[48%]">
       <View className="flex flex-row items-center justify-between">
         {typeof title === "string" ? (
-          <Text className="font-bold text-base">{title}</Text>
+          <Text className="font-bold text-base text-primary">{title}</Text>
         ) : (
           title
         )}
-        <Text className="text-black/25 text-sm">{period}</Text>
+        <Text className="text-primary/25 text-sm">{period}</Text>
       </View>
-      <Separator className="bg-zinc-300 my-2" />
+      <Separator className="bg-primary/10 my-2" />
       <View className="flex flex-row items-center justify-between">
-        <Text className="text-3xl font-bold text-black">{value}</Text>
+        <Text className="text-3xl font-bold text-primary">{value}</Text>
         <View className="flex flex-row gap-1 items-center justify-center">
           <Icon name="ArrowUp" size={18} color="#22c55e" />
           <Text

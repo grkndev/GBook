@@ -18,7 +18,7 @@ export default function Card({
     <Suspense fallback={<Skeleton className="h-28 w-28 rounded-2xl" />}>
       <Pressable className="flex flex-col gap-y-2 w-28">
         <Image className="w-28 aspect-square rounded-2xl" src={imageUrl} />
-        <Text className="text-xs w-full px-2">{truncate(title, maxChars)}</Text>
+        <Text className="text-xs w-full px-2 text-primary">{truncate(title, maxChars)}</Text>
       </Pressable>
     </Suspense>
   );
