@@ -25,6 +25,7 @@
     "@rn-primitives/portal": "^1.0.4",
     "@rn-primitives/separator": "^1.0.4",
     "@rn-primitives/slot": "^1.0.4",
+    "@rn-primitives/switch": "^1.0.4",
     "@rn-primitives/types": "^1.0.4",
     "axios": "^1.7.7",
     "class-variance-authority": "^0.7.0",

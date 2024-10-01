@@ -20,7 +20,7 @@ export default function ProfileIndex() {
               href="/profile/favorites"
               iconName={"Heart"}
             />
-            <Card title="Ayarlar" href="/user" iconName={"Settings"} />
+            <Card title="Ayarlar" href="/profile/settings" iconName={"Settings"} />
             <Card title="Çıkış Yap" href="/user" iconName={"LogOut"} />
           </View>
         </View>
