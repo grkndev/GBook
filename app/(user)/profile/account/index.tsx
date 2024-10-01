@@ -25,8 +25,8 @@ export default function AccountIndex() {
             href="/profile/account/statistics"
             iconName={"ChartNoAxesCombined"}
           />
-          <HeaderCard title="Abonelikler ve ödemeler" href="/user" iconName={"CreditCard"} />
-          <HeaderCard title="Yardım" href="/user" iconName={"CircleHelp"} />
+          <HeaderCard title="Abonelikler ve ödemeler" href="/profile/account/payments" iconName={"CreditCard"} />
+          <HeaderCard title="Yardım" href="/profile/account/help" iconName={"CircleHelp"} />
         </View>
       </View>
     </SafeAreaView>

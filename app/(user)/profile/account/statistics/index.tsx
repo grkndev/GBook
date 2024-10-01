@@ -28,7 +28,10 @@ import {
   BottomSheetView,
   BottomSheetBackdrop,
 } from "@gorhom/bottom-sheet";
+import { PROTOTYPE_DATA } from "./stats";
+
 export default function StatisticsIndex() {
+  const [statsData, setStatsData] = useState(PROTOTYPE_DATA.weekly);
   const [selectedPeriod, setSelectedPeriod] = React.useState<"7" | "14" | "30">(
     "7"
   );
@@ -63,7 +66,21 @@ export default function StatisticsIndex() {
   );
   useEffect(() => {
     bottomSheetModalRef.current?.close();
+    changeData();
   }, [selectedPeriod]);
+  const changeData = () => {
+    switch (selectedPeriod) {
+      case "7":
+        setStatsData(PROTOTYPE_DATA.weekly);
+        break;
+      case "14":
+        setStatsData(PROTOTYPE_DATA.biweekly);
+        break;
+      case "30":
+        setStatsData(PROTOTYPE_DATA.monthly);
+        break;
+    }
+  };
 
   return (
     <SafeAreaView>
@@ -137,13 +154,13 @@ export default function StatisticsIndex() {
       </View>
       <View className="flex w-full flex-col justify-center items-center px-4">
         <View className="w-full py-8">
-          <FlatList
-            data={[1, 2, 3, 4, 5, 6]}
+          {/* <FlatList
+            data={statsData}
             numColumns={2}
             renderItem={({ item }) => (
               <Card
                 title="Hesap durumu"
-                period="/hafta"
+                // period="/hafta"
                 value="22.4K"
                 persentage={40}
               />
@@ -152,7 +169,66 @@ export default function StatisticsIndex() {
             keyExtractor={(_, index) => "#" + index.toString()}
             contentContainerStyle={{ gap: 16 }}
             columnWrapperStyle={{ gap: 16, justifyContent: "space-between" }}
-          />
+          /> */}
+          <View className="flex flex-row flex-wrap gap-4  justify-between">
+            <Card
+              title={"Profil Ziyaretleri"}
+              value={statsData.profileVisits.newValue}
+              persentage={Math.round(
+                ((statsData.profileVisits.newValue /
+                  statsData.profileVisits.oldValue) *
+                  100) /
+                  2
+              )}
+            />
+            <Card
+              title={"Yeni Okuyucu"}
+              value={statsData.newReaders.newValue}
+              persentage={Math.round(
+                ((statsData.newReaders.newValue /
+                  statsData.newReaders.oldValue) *
+                  100) /
+                  2
+              )}
+            />
+            <Card
+              title={"Geri Gelen Okuyucu"}
+              value={statsData.returningReaders.newValue}
+              persentage={Math.round(
+                ((statsData.returningReaders.newValue /
+                  statsData.returningReaders.oldValue) *
+                  100) /
+                  2
+              )}
+            />
+            <Card
+              title={"Beğeni"}
+              value={statsData.likes.newValue}
+              persentage={Math.round(
+                ((statsData.likes.newValue / statsData.likes.oldValue) * 100) /
+                  2
+              )}
+            />
+            <Card
+              title={"Okuma Süresi"}
+              value={statsData.readingTime.newValue}
+              persentage={Math.round(
+                ((statsData.readingTime.newValue /
+                  statsData.readingTime.oldValue) *
+                  100) /
+                  2
+              )}
+            />
+            <Card
+              title={"Takipçi"}
+              value={statsData.followers.newValue}
+              persentage={Math.round(
+                ((statsData.followers.newValue / statsData.followers.oldValue) *
+                  100) /
+                  2
+              )}
+            />
+          </View>
         </View>
       </View>
       {isModalVisible && (
@@ -173,7 +249,7 @@ function Card({
 }: {
   title: string | React.ReactNode;
   period?: string | React.ReactNode;
-  value: string;
+  value: number;
   persentage: number;
 }) {
   return (
@@ -189,14 +265,17 @@ function Card({
       <Separator className="bg-zinc-300 my-2" />
       <View className="flex flex-row items-center justify-between">
         <Text className="text-3xl font-bold text-black">{value}</Text>
-        <Text
-          className={cn(
-            "text-2xl font-bold",
-            persentage > 20 ? "text-green-500" : "text-red-500"
-          )}
-        >
-          {persentage}%
-        </Text>
+        <View className="flex flex-row gap-1 items-center justify-center">
+          <Icon name="ArrowUp" size={18} color="#22c55e" />
+          <Text
+            className={cn(
+              "text-2xl font-bold",
+              persentage > 20 ? "text-green-500" : "text-red-500"
+            )}
+          >
+            {persentage}%
+          </Text>
+        </View>
       </View>
     </Pressable>
   );
