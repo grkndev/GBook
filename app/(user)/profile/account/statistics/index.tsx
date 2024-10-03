@@ -174,6 +174,7 @@ export default function StatisticsIndex() {
           <View className="flex flex-row flex-wrap gap-4  justify-between">
             <Card
               title={"Profil Ziyaretleri"}
+              period={"Kişi"}
               value={statsData.profileVisits.newValue}
               persentage={Math.round(
                 ((statsData.profileVisits.newValue /
@@ -185,6 +186,7 @@ export default function StatisticsIndex() {
             <Card
               title={"Yeni Okuyucu"}
               value={statsData.newReaders.newValue}
+              period={"Kişi"}
               persentage={Math.round(
                 ((statsData.newReaders.newValue /
                   statsData.newReaders.oldValue) *
@@ -194,6 +196,7 @@ export default function StatisticsIndex() {
             />
             <Card
               title={"Geri Gelen Okuyucu"}
+              period={"Kişi"}
               value={statsData.returningReaders.newValue}
               persentage={Math.round(
                 ((statsData.returningReaders.newValue /
@@ -204,6 +207,7 @@ export default function StatisticsIndex() {
             />
             <Card
               title={"Beğeni"}
+              period={"Kişi"}
               value={statsData.likes.newValue}
               persentage={Math.round(
                 ((statsData.likes.newValue / statsData.likes.oldValue) * 100) /
@@ -212,6 +216,7 @@ export default function StatisticsIndex() {
             />
             <Card
               title={"Okuma Süresi"}
+              period={"Dakika"}
               value={statsData.readingTime.newValue}
               persentage={Math.round(
                 ((statsData.readingTime.newValue /
@@ -222,6 +227,7 @@ export default function StatisticsIndex() {
             />
             <Card
               title={"Takipçi"}
+              period={"Kişi"}
               value={statsData.followers.newValue}
               persentage={Math.round(
                 ((statsData.followers.newValue / statsData.followers.oldValue) *
