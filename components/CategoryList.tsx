@@ -1,8 +1,16 @@
-import { FlatList, Image, Pressable, View } from "react-native";
+import {
+  FlatList,
+  Image,
+  Pressable,
+  useWindowDimensions,
+  View,
+  ViewToken,
+} from "react-native";
 import Text from "./Text";
 import Icon from "@/lib/Icons/icon";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import Card from "./Card";
+import { Animated } from "react-native";
 
 type CategoryData = {
   id: number;
@@ -11,6 +19,8 @@ type CategoryData = {
   img: string;
 };
 export default function CategoryList({ categoyName }: { categoyName: string }) {
+  const scrollX = useRef(new Animated.Value(0)).current;
+  const ITEM_SIZE = useWindowDimensions().width > 640 ? 192 : 112;
   const [state, setState] = useState<{
     categoryName: string;
     data: CategoryData[];
@@ -33,11 +43,34 @@ export default function CategoryList({ categoyName }: { categoyName: string }) {
         </Text>
         <Icon name="ChevronRight" size={20} />
       </Pressable>
-      <FlatList
+
+      <Animated.FlatList
         data={state.data}
-        renderItem={({ item }) => (
-          <Card title={item.title} imageUrl={item.img} href={"bookId1"} />
+        onScroll={Animated.event(
+          [{ nativeEvent: { contentOffset: { x: scrollX } } }],
+          { useNativeDriver: true }
         )}
+        renderItem={({ item, index }) => {
+          const inputRange = [
+            -1,
+            0,
+            ITEM_SIZE * index,
+            ITEM_SIZE * (index + 4),
+          ];
+          const scale = scrollX.interpolate({
+            inputRange,
+            outputRange: [1, 1, 1, 0],
+          });
+          return (
+            <Animated.View
+              style={{
+                transform: [{ scale }],
+              }}
+            >
+              <Card title={item.title} imageUrl={item.img} href={"bookId1"} />
+            </Animated.View>
+          );
+        }}
         keyExtractor={(_, index) => _.id.toString()}
         horizontal
         showsHorizontalScrollIndicator={false}

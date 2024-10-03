@@ -24,9 +24,12 @@ export default function Card({
         onPress={() => router.push(`/book/${href}` as Href)}
         className="flex flex-col gap-y-2 w-28 md:w-48"
       >
-        <Image className="w-28 md:w-48 aspect-square rounded-2xl" src={imageUrl} />
+        <Image
+          className="w-28 md:w-48 aspect-square rounded-2xl"
+          src={imageUrl}
+        />
         <Text className="text-xs md:text-sm w-full px-2 text-primary">
-          {truncate(title, maxChars)}
+          {title}
         </Text>
       </Pressable>
     </Suspense>
