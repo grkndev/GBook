@@ -20,9 +20,14 @@ export default function Seasons() {
         justifyContent: "center",
       }}
     >
-      <Text className="text-primary font-bold text-xl">
-        Sezon {id} (10 Chapters)
-      </Text>
+      <View className="flex w-full h-20 border-b border-primary/10 flex-row justify-between items-center">
+        <Link href={"/user"}>
+          <Icon name="ChevronLeft" size={24} />
+        </Link>
+        <Text className="text-primary font-bold text-xl">
+          Sezon {id} (10 Chapters)
+        </Text>
+      </View>
       <View style={{ flex: 1, width: "100%" }}>
         <FlatList
           data={Array.from({ length: 20 })}
@@ -38,7 +43,7 @@ export default function Seasons() {
             </Link>
           )}
           ItemSeparatorComponent={() => (
-            <Separator className="h-0.5 bg-primary/25 mt-4" />
+            <Separator className="h-0.5 bg-primary/10 mt-4" />
           )}
           keyExtractor={(item, index) => index.toString()}
         />
