@@ -1,11 +1,4 @@
 import Text from "@/components/Text";
-import { Button } from "~/components/ui/button";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "~/components/ui/popover";
-import * as PopoverPrimitive from "@rn-primitives/popover";
 import { Separator } from "@/components/ui/separator";
 import Icon from "@/lib/Icons/icon";
 import { cn } from "@/lib/utils";
@@ -29,8 +22,10 @@ import {
   BottomSheetBackdrop,
 } from "@gorhom/bottom-sheet";
 import { PROTOTYPE_DATA } from "./stats";
+import { useColorScheme } from "@/lib/useColorScheme";
 
 export default function StatisticsIndex() {
+  const { isDarkColorScheme } = useColorScheme();
   const [statsData, setStatsData] = useState(PROTOTYPE_DATA.weekly);
   const [selectedPeriod, setSelectedPeriod] = React.useState<"7" | "14" | "30">(
     "7"
@@ -39,7 +34,7 @@ export default function StatisticsIndex() {
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 
   // variables
-  const snapPoints = useMemo(() => ["22%"], []);
+  const snapPoints = useMemo(() => ["20%"], []);
 
   // callbacks
   const handlePresentModalPress = useCallback(() => {
@@ -97,16 +92,28 @@ export default function StatisticsIndex() {
           className="bg-muted p-2 rounded-xl"
           onPress={handlePresentModalPress}
         >
-          <Text className="font-semibold text-primary">Son {selectedPeriod} Gün</Text>
+          <Text className="font-semibold text-primary">
+            Son {selectedPeriod} Gün
+          </Text>
         </Pressable>
         <BottomSheetModal
+          handleIndicatorStyle={{
+            backgroundColor: isDarkColorScheme
+              ? "hsl(240 4.8% 95.9%)"
+              : "hsl(240 3.7% 15.9%)",
+          }}
+          handleStyle={{
+            backgroundColor: isDarkColorScheme
+              ? "hsl(240 3.7% 15.9%)"
+              : "hsl(240 4.8% 95.9%)",
+          }}
           ref={bottomSheetModalRef}
           index={0}
           snapPoints={snapPoints}
           onChange={handleSheetChanges}
           backdropComponent={renderBackdrop}
         >
-          <BottomSheetView  className="flex-1 items-center p-4 dark:bg-secondary">
+          <BottomSheetView className="flex-1 items-center p-4 dark:bg-secondary">
             <Pressable
               onPress={() => setSelectedPeriod("7")}
               className={cn(
@@ -115,9 +122,7 @@ export default function StatisticsIndex() {
               )}
             >
               <View className="w-8 h-8 items-center justify-center">
-                {selectedPeriod === "7" && (
-                  <Icon name="Check" size={16} />
-                )}
+                {selectedPeriod === "7" && <Icon name="Check" size={16} />}
               </View>
               <Text className="text-primary">Son 7 Gün</Text>
             </Pressable>
@@ -129,9 +134,7 @@ export default function StatisticsIndex() {
               )}
             >
               <View className="w-8 h-8 items-center justify-center">
-                {selectedPeriod === "14" && (
-                  <Icon name="Check" size={16} />
-                )}
+                {selectedPeriod === "14" && <Icon name="Check" size={16} />}
               </View>
               <Text className="text-primary">Son 14 Gün</Text>
             </Pressable>
@@ -143,9 +146,7 @@ export default function StatisticsIndex() {
               )}
             >
               <View className="w-8 h-8 items-center justify-center">
-                {selectedPeriod === "30" && (
-                  <Icon name="Check" size={16} />
-                )}
+                {selectedPeriod === "30" && <Icon name="Check" size={16} />}
               </View>
               <Text className="text-primary">Son 30 Gün</Text>
             </Pressable>
