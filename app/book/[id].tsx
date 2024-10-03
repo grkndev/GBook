@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React from "react";
-import { Link, useLocalSearchParams } from "expo-router";
+import { Href, Link, useLocalSearchParams } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { BlurView } from "expo-blur";
 import { useColorScheme } from "@/lib/useColorScheme";
@@ -119,12 +119,14 @@ export default function BookScreen() {
                 data={Array.from({ length: 10 })}
                 contentContainerStyle={{ rowGap: 16 }}
                 renderItem={({ item, index }) => (
-                  <TouchableOpacity className="flex flex-row gap-2 items-center p-2 ">
-                    <Icon name="GalleryVerticalEnd" size={24} />
-                    <Text className="text-primary font-medium">
-                      {index + 1}. Sezon
-                    </Text>
-                  </TouchableOpacity>
+                  <Link href={`/book/seasons/1` as Href}>
+                    <View className="flex flex-row gap-2 items-center p-2 ">
+                      <Icon name="GalleryVerticalEnd" size={24} />
+                      <Text className="text-primary font-medium">
+                        {index + 1}. Sezon
+                      </Text>
+                    </View>
+                  </Link>
                 )}
                 ItemSeparatorComponent={() => (
                   <Separator className="h-0.5 bg-primary/25 mt-4" />
@@ -146,7 +148,9 @@ export default function BookScreen() {
                           src="https://placehold.jp/150x150.png"
                           className="w-10 h-10 object-cover rounded-full"
                         />
-                        <Text className="text-primary font-medium">GrknDev</Text>
+                        <Text className="text-primary font-medium">
+                          GrknDev
+                        </Text>
                       </View>
                       <View className="flex flex-row gap-1 items-center">
                         <Icon
