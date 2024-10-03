@@ -18,7 +18,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function AccountDetailsIndex() {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ flex: 1 }}>
       <View className="flex flex-row justify-between items-center p-8 border-b border-primary/10">
         <Link href={"/profile/settings"}>
           <Icon name="ChevronLeft" size={24} />
@@ -27,10 +27,9 @@ export default function AccountDetailsIndex() {
         <View className="w-6 h-6" />
       </View>
       <KeyboardAvoidingView
-        behavior={"padding"}
-        style={{ justifyContent: "center" }}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={{ justifyContent: "center", flex: 0.99 }}
       >
-       
         <ScrollView>
           <View className="flex flex-col items-center justify-between w-full p-4 gap-8">
             <View className="flex flex-col gap-2 w-full">
@@ -62,7 +61,8 @@ export default function AccountDetailsIndex() {
               <Text className="text-primary font-bold text-lg">Görünen ad</Text>
               <View className="flex flex-row bg-secondary rounded-2xl p-3">
                 <TextInput
-                  className="text-primary w-full"
+                  className="text-primary w-full "
+                  placeholderTextColor={"hsl(240 3.8% 46.1%)"}
                   placeholder="Görünen adınız"
                 />
               </View>
@@ -80,6 +80,7 @@ export default function AccountDetailsIndex() {
                 <TextInput
                   className="text-primary w-full"
                   placeholder="Kullanıcı adınız"
+                  placeholderTextColor={"hsl(240 3.8% 46.1%)"}
                 />
               </View>
               <Text className="text-xs text-primary/50">
@@ -95,6 +96,7 @@ export default function AccountDetailsIndex() {
                   textAlign="left"
                   textAlignVertical="top"
                   className="text-primary w-full min-h-20"
+                  placeholderTextColor={"hsl(240 3.8% 46.1%)"}
                   placeholder="Biyografi"
                   maxLength={150}
                 />
@@ -111,6 +113,7 @@ export default function AccountDetailsIndex() {
                 <TextInput
                   className="text-primary w-full"
                   placeholder="Telefon numaranız"
+                  placeholderTextColor={"hsl(240 3.8% 46.1%)"}
                   keyboardType="phone-pad"
                 />
               </View>
@@ -127,6 +130,7 @@ export default function AccountDetailsIndex() {
                 <TextInput
                   className="text-primary w-full"
                   placeholder="E-Posta adresiniz"
+                  placeholderTextColor={"hsl(240 3.8% 46.1%)"}
                   keyboardType="email-address"
                 />
               </View>

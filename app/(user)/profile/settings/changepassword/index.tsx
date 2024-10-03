@@ -18,8 +18,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function ChangePasswordIndex() {
   return (
-    <SafeAreaView className="flex flex-col justify-between ">
-      
+    <SafeAreaView
+      style={{ flex: 1 }}
+      className="flex flex-col justify-between "
+    >
       <View className="flex flex-row justify-between items-center p-8 border-b border-primary/10">
         <Link href={"/profile/settings"}>
           <Icon name="ChevronLeft" size={24} />
@@ -30,7 +32,10 @@ export default function ChangePasswordIndex() {
         <View className="w-6 h-6" />
       </View>
 
-      <View className="flex flex-col items-center w-full p-4 gap-8">
+      <View
+        style={{ flex: 1 }}
+        className="flex flex-col items-center w-full p-4 gap-8"
+      >
         <View className="flex flex-col gap-2 w-full">
           <Text className="text-primary font-bold text-lg">
             Mevcut şifreniz
@@ -39,6 +44,7 @@ export default function ChangePasswordIndex() {
             <TextInput
               className="text-primary w-full"
               placeholder="Mevcut şifreniz"
+              placeholderTextColor={"hsl(240 3.8% 46.1%)"}
               secureTextEntry
             />
           </View>
@@ -53,6 +59,7 @@ export default function ChangePasswordIndex() {
             <TextInput
               className="text-primary w-full"
               placeholder="Yeni şifreniz"
+              placeholderTextColor={"hsl(240 3.8% 46.1%)"}
               secureTextEntry
             />
           </View>
@@ -70,6 +77,7 @@ export default function ChangePasswordIndex() {
             <TextInput
               className="text-primary w-full"
               placeholder="Yeni şifreniz tekrar"
+              placeholderTextColor={"hsl(240 3.8% 46.1%)"}
               secureTextEntry
             />
           </View>
@@ -84,8 +92,6 @@ export default function ChangePasswordIndex() {
           <Text className="text-primary-foreground font-bold">Kaydet</Text>
         </TouchableOpacity>
       </View>
-
-
     </SafeAreaView>
   );
 }

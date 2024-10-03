@@ -36,7 +36,7 @@ export default function ActivityScreen() {
               <Icon name="Smartphone" size={12} />
               <Text className="text-primary font-bold text-sm">Cihaz</Text>
             </View>
-            <Text className="text-sm ">iOS 18 (12.12.12.12)</Text>
+            <Text className="text-sm text-primary">iOS 18 (12.12.12.12)</Text>
           </View>
 
           <View className="flex flex-row items-center justify-center gap-2">
@@ -44,7 +44,7 @@ export default function ActivityScreen() {
               <Icon name="Calendar" size={12} />
               <Text className="text-primary font-bold text-sm">Tarih</Text>
             </View>
-            <Text className="text-sm ">24/09/2024 - 22:30</Text>
+            <Text className="text-sm text-primary">24/09/2024 - 22:30</Text>
           </View>
 
           <View className="flex flex-row items-center justify-center gap-2">
@@ -52,7 +52,7 @@ export default function ActivityScreen() {
               <Icon name="MapPin" size={12} />
               <Text className="text-primary font-bold text-sm">Konum</Text>
             </View>
-            <Text className="text-sm ">Ankara, TR</Text>
+            <Text className="text-sm text-primary">Ankara, TR</Text>
           </View>
         </View>
       </View>
@@ -63,7 +63,7 @@ export default function ActivityScreen() {
         <View className="flex flex-col bg-secondary rounded-2xl p-3 gap-2 items-start justify-start">
           <View className="flex flex-row items-center justify-center gap-2">
             <Icon name="Calendar" size={12} />
-            <Text className="text-sm ">01.01.2001 Tarihinde oluşturuldu.</Text>
+            <Text className="text-sm text-primary">01.01.2001 Tarihinde oluşturuldu.</Text>
           </View>
         </View>
       </View>
