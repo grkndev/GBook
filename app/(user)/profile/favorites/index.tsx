@@ -7,7 +7,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function FavIndex() {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ flex: 1 }}>
       <View className="flex flex-row justify-between items-center p-8 border-b border-primary/10">
         <Link href={"/profile"}>
           <Icon name="ChevronLeft" size={24} />
@@ -16,13 +16,16 @@ export default function FavIndex() {
         <View className="w-6 h-6" />
       </View>
 
-      <View className="flex w-full justify-center items-center pb-8">
+      <View
+        style={{ flex: 1 }}
+        className="flex w-full h-full justify-center items-center mb-8"
+      >
         <FlatList
           data={Array.from({ length: 25 })}
-          columnWrapperStyle={{ justifyContent: "space-around", gap: 4 }}
+          columnWrapperStyle={{ justifyContent: "center", gap: 24 }}
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ gap: 32 }}
-          className="w-full p-4"
+          contentContainerStyle={{ gap: 24 }}
+          className="w-full top-4"
           numColumns={3}
           key={"#"}
           keyExtractor={(item, index) => "#" + index.toString()}
