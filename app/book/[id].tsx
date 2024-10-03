@@ -50,19 +50,19 @@ export default function BookScreen() {
             </View>
           </View>
 
-          <View className="flex flex-row w-full gap-2 px-2">
+          <View className="flex flex-row w-full gap-2 md:gap-4 px-2">
             <View className="bg-primary/25 flex rounded-xl p-2">
               <Image
                 src="https://placehold.jp/600x750.png"
-                className="aspect-[4/5] w-24 object-cover rounded-lg"
+                className="aspect-[4/5] w-24 md:w-48 object-cover rounded-lg"
               />
             </View>
             <View className="flex flex-col items-start justify-center">
-              <Text className="text-primary text-lg font-bold">
+              <Text className="text-primary text-lg md:text-2xl font-bold">
                 Lorem ipsum dolar sit
               </Text>
-              <Text className="text-primary/50 text-sm">by GrknDev</Text>
-              <Text className="text-primary/50 text-xs">3 Season</Text>
+              <Text className="text-primary/50 text-sm md:text-base">by GrknDev</Text>
+              <Text className="text-primary/50 text-xs md:text-sm">3 Season</Text>
             </View>
           </View>
         </BlurView>
@@ -135,13 +135,13 @@ export default function BookScreen() {
               />
             </View>
           </TabsContent>
-          <TabsContent value="comments" className="p-4  w-full h-[80%]">
+          <TabsContent value="comments" className="p-4  w-full h-[75vh]">
             <View style={{ flex: 1 }}>
               <FlatList
                 data={Array.from({ length: 10 })}
                 contentContainerStyle={{ rowGap: 16 }}
                 renderItem={({ item, index }) => (
-                  <TouchableOpacity className="flex flex-col gap-2 items-center p-2 ">
+                  <TouchableOpacity className="flex flex-col gap-2 items-start p-2 ">
                     <View className="flex flex-row justify-between items-center w-full">
                       <View className="flex flex-row items-center gap-2">
                         <Image
@@ -149,7 +149,7 @@ export default function BookScreen() {
                           className="w-10 h-10 object-cover rounded-full"
                         />
                         <Text className="text-primary font-medium">
-                          GrknDev
+                          GrknDev {index+1}
                         </Text>
                       </View>
                       <View className="flex flex-row gap-1 items-center">
