@@ -9,7 +9,7 @@ export default function MostLikedHero() {
         <Text className="text-sm text-primary">Okuyanlar bu yazıyı çok beğeniyor.</Text>
       </View>
       <Image
-        src="https://via.placeholder.com/1500x500.png"
+        src="https://placehold.jp/1920x1080.png"
         className="w-full aspect-video h-auto rounded-3xl"
       />
     </View>

@@ -101,8 +101,9 @@ export default function UserScreen() {
                 key={"#"}
                 scrollEnabled={false}
                 data={Array.from({ length: postList })}
-                renderItem={() => (
+                renderItem={({ item, index }) => (
                   <Card
+                    href={`/book/` + index}
                     title="title"
                     imageUrl="https://via.placeholder.com/150"
                   />

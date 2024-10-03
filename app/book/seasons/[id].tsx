@@ -20,13 +20,15 @@ export default function Seasons() {
         justifyContent: "center",
       }}
     >
-      <Text className="text-primary font-bold text-xl">Sezon {id} (10 Chapters)</Text>
+      <Text className="text-primary font-bold text-xl">
+        Sezon {id} (10 Chapters)
+      </Text>
       <View style={{ flex: 1, width: "100%" }}>
         <FlatList
           data={Array.from({ length: 20 })}
           contentContainerStyle={{ rowGap: 16 }}
           renderItem={({ item, index }) => (
-            <Link href={`/book/content/1` as Href}>
+            <Link href={`/book/content/${id}-${index + 1}` as Href}>
               <View className="flex flex-row gap-2 items-center p-2 ">
                 <Icon name="Book" size={24} />
                 <Text className="text-primary font-medium">

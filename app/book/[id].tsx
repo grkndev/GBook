@@ -119,7 +119,7 @@ export default function BookScreen() {
                 data={Array.from({ length: 10 })}
                 contentContainerStyle={{ rowGap: 16 }}
                 renderItem={({ item, index }) => (
-                  <Link href={`/book/seasons/1` as Href}>
+                  <Link href={`/book/seasons/${index + 1}` as Href}>
                     <View className="flex flex-row gap-2 items-center p-2 ">
                       <Icon name="GalleryVerticalEnd" size={24} />
                       <Text className="text-primary font-medium">
