@@ -16,7 +16,6 @@ import { cacheManager } from "@/lib/storage";
 import Icon from "@/lib/Icons/icon";
 import { useMarkdownStyles } from "@/lib/MarkdownStyles";
 
-
 export default function BookContent() {
   const { id } = useLocalSearchParams();
   const [season, chapter] = (id as string).split("-");
@@ -25,22 +24,25 @@ export default function BookContent() {
   const [error, setError] = useState<string | null>(null);
   const { width } = useWindowDimensions();
   const markdownStyles = useMarkdownStyles();
+  const [isCache, setIsCache] = useState(false);
 
   useEffect(() => {
     const fetchContent = async () => {
       try {
         const cacheKey = `book-${season}-${chapter}`;
+        console.log("Fetching content for", cacheKey);
 
         // Önbellekten kontrol et
         const cachedContent = await cacheManager.get(cacheKey);
         if (cachedContent) {
+          setIsCache(true);
           setContent(cachedContent);
           setLoading(false);
           return;
         }
 
         const cdnUri =
-          "https://cdnqrmenu.s3.eu-west-1.amazonaws.com/grkn/demo.mdx";
+          "https://cdnqrmenu.s3.eu-west-1.amazonaws.com/grkn/demo1.mdx";
         // CDN'den fetch et
         const response = await fetch(
           cdnUri //`https://your-cdn-url.com/books/${season}/chapter-${chapter}.md`
@@ -54,7 +56,7 @@ export default function BookContent() {
 
         // Önbelleğe kaydet
         await cacheManager.set(cacheKey, markdownContent);
-
+        setIsCache(false);
         setContent(markdownContent);
       } catch (err) {
         setError(err instanceof Error ? err.message : "An error occurred");
@@ -83,14 +85,15 @@ export default function BookContent() {
           showsVerticalScrollIndicator={false}
           style={{ height: "90%" }}
         >
+          <Text className="text-center text-primary/60">
+            {isCache ? "Cached content" : "Content fetched from CDN"}
+          </Text>
           {loading ? (
             <ActivityIndicator size="large" />
           ) : error ? (
             <Text className="text-red-500">{error}</Text>
           ) : (
-            <Markdown  style={markdownStyles}>
-              {content}
-            </Markdown>
+            <Markdown style={markdownStyles}>{content}</Markdown>
           )}
         </ScrollView>
       </View>

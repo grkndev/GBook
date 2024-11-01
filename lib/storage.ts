@@ -5,7 +5,7 @@ interface CacheItem {
   timestamp: number;
 }
 
-const CACHE_EXPIRY = 24 * 60 * 60 * 1000; // 24 saat
+const CACHE_EXPIRY = 2 * 60 * 60 * 1000; // 2 saat
 
 export const cacheManager = {
   async set(key: string, content: string) {
