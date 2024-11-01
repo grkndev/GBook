@@ -1,4 +1,4 @@
-import '~/global.css';
+import "~/global.css";
 
 import { NAV_THEME } from "~/lib/constants";
 import { useColorScheme } from "~/lib/useColorScheme";
@@ -15,6 +15,7 @@ import { useFonts } from "expo-font";
 import * as React from "react";
 import { Platform } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import Offline from "./(offline)/offline";
 
 const LIGHT_THEME: Theme = {
   dark: false,
@@ -40,6 +41,7 @@ export default function RootLayout() {
   const [loaded, error] = useFonts({
     "SF-Pro": require("assets/fonts/SF-Pro.ttf"),
   });
+
   React.useEffect(() => {
     (async () => {
       const theme = await AsyncStorage.getItem("theme");
@@ -82,6 +84,7 @@ export default function RootLayout() {
         <GestureHandlerRootView>
           <BottomSheetModalProvider>
             <StatusBar style={isDarkColorScheme ? "light" : "dark"} />
+
             <Stack screenOptions={{ headerShown: false }} />
           </BottomSheetModalProvider>
         </GestureHandlerRootView>

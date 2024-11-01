@@ -20,7 +20,7 @@
     "@gorhom/bottom-sheet": "^4.6.4",
     "@mdx-js/mdx": "^3.0.1",
     "@react-native-async-storage/async-storage": "^1.23.1",
-    "@react-native-community/netinfo": "^11.4.1",
+    "@react-native-community/netinfo": "11.3.1",
     "@react-navigation/native": "^6.0.2",
     "@rn-primitives/avatar": "^1.0.5",
     "@rn-primitives/dropdown-menu": "^1.0.4",
