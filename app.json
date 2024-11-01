@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.gweepcreative.GBook"
     },
     "web": {
       "bundler": "metro",
@@ -30,7 +31,7 @@
       [
         "expo-router",
         {
-          "origin": "https://grkn.dev/"
+          "origin": "https://gbook.grkn.dev/"
         }
       ],
       [
@@ -42,6 +43,11 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "8f0b2796-f508-4f7f-924c-454bb48cbbcc"
+      }
     }
   }
 }

@@ -1,14 +1,71 @@
-import { View, Text, ScrollView } from "react-native";
-import React from "react";
+import {
+  View,
+  Text,
+  ScrollView,
+  ActivityIndicator,
+  useWindowDimensions,
+  TextStyle,
+  ViewStyle,
+  StyleSheet,
+} from "react-native";
+import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link, useLocalSearchParams } from "expo-router";
-import { MDXComponents } from "@bacons/mdx";
-import Demo from "~/books/demo.mdx";
+import Markdown from "react-native-markdown-display";
+import { cacheManager } from "@/lib/storage";
 import Icon from "@/lib/Icons/icon";
+import { useMarkdownStyles } from "@/lib/MarkdownStyles";
+
 
 export default function BookContent() {
   const { id } = useLocalSearchParams();
   const [season, chapter] = (id as string).split("-");
+  const [content, setContent] = useState<string>("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const { width } = useWindowDimensions();
+  const markdownStyles = useMarkdownStyles();
+
+  useEffect(() => {
+    const fetchContent = async () => {
+      try {
+        const cacheKey = `book-${season}-${chapter}`;
+
+        // Önbellekten kontrol et
+        const cachedContent = await cacheManager.get(cacheKey);
+        if (cachedContent) {
+          setContent(cachedContent);
+          setLoading(false);
+          return;
+        }
+
+        const cdnUri =
+          "https://cdnqrmenu.s3.eu-west-1.amazonaws.com/grkn/demo.mdx";
+        // CDN'den fetch et
+        const response = await fetch(
+          cdnUri //`https://your-cdn-url.com/books/${season}/chapter-${chapter}.md`
+        );
+
+        if (!response.ok) {
+          throw new Error("Content could not be loaded");
+        }
+
+        const markdownContent = await response.text();
+
+        // Önbelleğe kaydet
+        await cacheManager.set(cacheKey, markdownContent);
+
+        setContent(markdownContent);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "An error occurred");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchContent();
+  }, [season, chapter]);
+
   return (
     <SafeAreaView className="w-full">
       <View className="w-full flex flex-row justify-between items-center p-8 border-b border-primary/10">
@@ -26,47 +83,15 @@ export default function BookContent() {
           showsVerticalScrollIndicator={false}
           style={{ height: "90%" }}
         >
-          <MDXComponents
-            components={{
-              h1: (props) => (
-                <Text
-                  {...props}
-                  className="text-primary"
-                  style={{ fontSize: 32, fontWeight: "bold" }}
-                />
-              ),
-              h2: (props) => (
-                <Text
-                  {...props}
-                  className="text-primary"
-                  style={{ fontSize: 24 }}
-                />
-              ),
-              h3: (props) => (
-                <Text
-                  {...props}
-                  className="text-primary"
-                  style={{ fontSize: 20 }}
-                />
-              ),
-              h4: (props) => (
-                <Text
-                  {...props}
-                  className="text-primary"
-                  style={{ fontSize: 16 }}
-                />
-              ),
-              p: (props) => <Text {...props} className="text-primary" />,
-              a: (props) => (
-                <Text
-                  {...props}
-                  className="text-primary font-medium underline"
-                />
-              ),
-            }}
-          >
-            <Demo />
-          </MDXComponents>
+          {loading ? (
+            <ActivityIndicator size="large" />
+          ) : error ? (
+            <Text className="text-red-500">{error}</Text>
+          ) : (
+            <Markdown  style={markdownStyles}>
+              {content}
+            </Markdown>
+          )}
         </ScrollView>
       </View>
     </SafeAreaView>
