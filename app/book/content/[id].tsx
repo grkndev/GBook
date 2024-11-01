@@ -4,9 +4,7 @@ import {
   ScrollView,
   ActivityIndicator,
   useWindowDimensions,
-  TextStyle,
-  ViewStyle,
-  StyleSheet,
+
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -30,7 +28,6 @@ export default function BookContent() {
     const fetchContent = async () => {
       try {
         const cacheKey = `book-${season}-${chapter}`;
-        console.log("Fetching content for", cacheKey);
 
         // Önbellekten kontrol et
         const cachedContent = await cacheManager.get(cacheKey);

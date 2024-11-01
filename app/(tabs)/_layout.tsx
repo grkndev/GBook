@@ -16,7 +16,6 @@ export default function TabLayout() {
       if (!state.isConnected) {
         setIsConnected(false);
         router.replace("/offline" as any);
-        router.dismissAll();
       } else {
         setIsConnected(true);
         router.canGoBack() ?? router.back();

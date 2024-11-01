@@ -6,7 +6,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 export default function Offline() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <View className="h-full p-2 flex items-center justify-center flex-col gap-3">
+      <View className="h-full p-8 sm:p-16 flex items-center justify-center flex-col gap-3">
         <View className="bg-red-500/50 flex items-center justify-center p-6 rounded-full">
           <Icon name="WifiOff" size={48} />
         </View>
