@@ -21,7 +21,7 @@ export default function Seasons() {
       }}
     >
       <View className="flex w-full h-20 border-b border-primary/10 flex-row justify-between items-center">
-        <Link href={"/user"}>
+        <Link href={"/book/bookId1"}>
           <Icon name="ChevronLeft" size={24} />
         </Link>
         <Text className="text-primary font-bold text-xl">
